@@ -1,0 +1,1 @@
+export { TrainsComponent } from './trains.component';
