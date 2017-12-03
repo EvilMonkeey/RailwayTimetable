@@ -1,3 +1,18 @@
-<p>
-  timetable works!
-</p>
+<div class="w3-display-left w3-padding w3-col l6 m8">
+  <div class="w3-container">
+    <table class="w3-table-all w3-card-4">
+      <thead class="w3-red">
+        <td>Indulás</td>
+        <td>Érkezés</td>
+        <td>Időtartam</td>
+        <td>Összes km</td>
+      </thead>
+      <tr *ngFor="let place of data | sortBy: 'start'">
+        <td>{{place.start}}</td>
+        <td>{{place.arrive}}</td>
+        <td>{{place.time}}</td>
+        <td>{{place.dist}}</td>
+      </tr>
+    </table>
+  </div>
+</div>

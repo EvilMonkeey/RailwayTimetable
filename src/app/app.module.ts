@@ -1,14 +1,17 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from "@angular/common/http";
+import { SearchFormModule } from './searchForm';
+import { TimetableModule } from './timetable';
+import { SearchService } from './search.service';
 import { AppComponent } from './app.component';
-import { ContactComponent } from './contact/contact.component';
-import { AboutComponent } from './about/about.component';
-import { TrainsComponent } from './trains/trains.component';
-import { TimetableComponent } from './timetable/timetable.component';
-import { SearchComponent } from './search/search.component';
+import { ContactComponent } from './contact';
+import { AboutComponent } from './about';
+import { TrainsComponent } from './trains';
 
 
 @NgModule({
@@ -16,15 +19,18 @@ import { SearchComponent } from './search/search.component';
     AppComponent,
     ContactComponent,
     AboutComponent,
-    TrainsComponent,
-    TimetableComponent,
-    SearchComponent
+    TrainsComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SearchFormModule,
+    TimetableModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [SearchService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

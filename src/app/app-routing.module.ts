@@ -5,16 +5,18 @@ import { AboutComponent } from './about';
 import { ContactComponent } from './contact';
 import { TrainsComponent } from './trains';
 import { TimetableComponent } from "./timetable";
-import { SearchComponent } from "./search";
-//import { LoggedInGuard } from './logged-in.guard';
-//import { SplitComponent } from './split';
-//import { DataComponent } from './data/data.component';
-//import { DataResolver } from './data/data.resolver';
+import { SearchFormComponent } from "./searchForm";
 
 const routes: Routes = [
     {
         path: '',
-        component: SearchComponent
+        redirectTo: '/search',
+        pathMatch: 'full'
+    },
+    {
+        path: 'search',
+        component: SearchFormComponent
+
     },
     {
         path: 'about',
@@ -29,37 +31,10 @@ const routes: Routes = [
         component: TrainsComponent
     },
     {
-        path: 'timetable',
-        component: TimetableComponent
+        path: 'timetable/:from/:to/:date',
+        component: TimetableComponent,
+        //loadChildren: 'app/timetable/timetable.module#TimetableModule',
     },
-    /*{
-        path: 'login2',
-        redirectTo: 'login'
-    },
-    {
-        path: 'split',
-        component: SplitComponent,
-        children: [
-            {
-                path: ':mailId',
-                component: MailComponent,
-                outlet: 'left'
-            },
-            {
-                path: ':mailId',
-                component: MailComponent,
-                outlet: 'right'
-            }
-        ]
-    },
-    {
-        path: 'user',
-        loadChildren: 'app/user/user.module#UserModule'
-    },
-    {
-        path: '**',
-        redirectTo: ''
-    }*/
 ];
 
 @NgModule({
@@ -67,6 +42,6 @@ const routes: Routes = [
         RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
     ],
     exports: [RouterModule],
-    providers: [/*LoggedInGuard, DataResolver*/]
+    providers: []
 })
 export class AppRoutingModule { }

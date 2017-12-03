@@ -5,11 +5,11 @@
     <i class="fa fa-map-marker w3-text-red" style="width:30px"></i> Szeged, Magyarország<br>
     <i class="fa fa-phone w3-text-red" style="width:30px"></i> Telefonszám: (+36-62) 544-000<br>
     <i class="fa fa-envelope w3-text-red" style="width:30px"> </i> Szegedi Tudományegyetem<br>
-    <form action="/action_page.php" target="_blank">
-      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Név" required name="Name"></p>
-      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Email" required name="Email"></p>
-      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Üzenet" required name="Message"></p>
-      <p><button class="w3-button w3-black w3-padding-large" type="submit">SEND MESSAGE</button></p>
+    <form (ngSubmit)="onSubmit()" #contactForm="ngForm">
+      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Név" required name="Name" [(ngModel)]="model.name" #name="ngModel"></p>
+      <p><input class="w3-input w3-padding-16 w3-border" type="email" placeholder="Email" required name="Email" [(ngModel)]="model.email" #email="ngModel"></p>
+      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Üzenet" required name="Message" [(ngModel)]="model.message" #message="ngModel"></p>
+      <p><button class="w3-button w3-black w3-padding-large" type="submit" [disabled]="contactForm.form.invalid">Üzenet küldése</button></p>
     </form>
   </div>
 </div>

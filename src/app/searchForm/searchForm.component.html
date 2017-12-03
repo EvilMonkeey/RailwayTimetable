@@ -1,0 +1,32 @@
+<div class="w3-display-left w3-padding w3-col l6 m8">
+  <div class="w3-container w3-red">
+    <h2>
+      <i class="fa fa-train w3-margin-right"></i>Vasúti menetrend</h2>
+  </div>
+  <div class="w3-container w3-white w3-padding-16">
+    <form (ngSubmit)="onSubmit()" #searchForm="ngForm">
+      <div class="w3-row-padding" style="margin:0 -16px;">
+        <div class="w3-half w3-margin-bottom">
+          <label for="placeFrom">Indulás helyszíne</label>
+          <select id="placeFrom" required name="placeFrom" [(ngModel)]="model.from" #placeFrom="ngModel">
+            <option *ngFor="let place of places" [value]="place">{{place}}</option>
+          </select>
+        </div>
+        <div class="w3-half">
+          <label for="placeTo">Érkezés helyszíne</label>
+          <select id="placeTo" required name="placeTo" [(ngModel)]="model.to" #placeTo="ngModel">
+            <option *ngFor="let place of places" [value]="place">{{place}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="w3-row-padding" style="margin:8px -16px;">
+        <div class="w3-half">
+          <label for="date"><i class="fa fa-calendar-o"></i> Indulás időpontja</label>
+          <input class="w3-input w3-border" required type="date" id="date" name="date" [(ngModel)]="model.date" #date="ngModel" >
+        </div>
+      </div>
+      <button class="w3-button w3-block w3-dark-grey" type="submit" [disabled]="searchForm.form.invalid">
+        <i class="fa fa-search w3-margin-right"></i> Menetrend</button>
+    </form>
+  </div>
+</div>
